@@ -5,5 +5,5 @@ package com.example.Domain;
  */
 public enum TipoMedalla {
 
-    ORO, PLATA, BRONCE
+    ORO, PLATA, BRONCE, NO
 }

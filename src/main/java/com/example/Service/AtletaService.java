@@ -22,34 +22,31 @@ public class AtletaService {
     @Autowired
     private AtletaRepository atletaRepository;
 
-    @Autowired
-    private MedallaRepository medallaRepository;
-
     public void testAtleta(){
 
-        Medalla medalla = medallaRepository.findOne(1L);
+
         LocalDate date = LocalDate.of(1994,12,11);
-        Atleta atleta1 = new Atleta("Kevin", "Castro", "Ruso", date, medalla);
+        Atleta atleta1 = new Atleta("Kevin", "Castro", "Ruso", date);
         atletaRepository.save(atleta1);
 
-        medalla = medallaRepository.findOne(2L);
+
         date = LocalDate.of(1994,10,6);
-        Atleta atleta2 = new Atleta("Anna", "Barnet", "Espanyol", date, medalla);
+        Atleta atleta2 = new Atleta("Anna", "Barnet", "Espanyol", date);
         atletaRepository.save(atleta2);
 
-        medalla = medallaRepository.findOne(3L);
+
         date = LocalDate.of(1990,6,6);
-        Atleta atleta3 = new Atleta("James", "McGucci", "Israel", date, medalla);
+        Atleta atleta3 = new Atleta("James", "McGucci", "Israel", date);
         atletaRepository.save(atleta3);
 
-        medalla = medallaRepository.findOne(4L);
+
         date = LocalDate.of(1995, 2, 15);
-        Atleta atleta4 = new Atleta("David", "Guevara", "Cuba", date, medalla);
+        Atleta atleta4 = new Atleta("David", "Guevara", "Cuba", date);
         atletaRepository.save(atleta4);
 
-        medalla = medallaRepository.findOne(5L);
+
         date = LocalDate.of(1985, 6, 30);
-        Atleta atleta5 = new Atleta("Pablo", "Hasél", "Perú", date, medalla);
+        Atleta atleta5 = new Atleta("Pablo", "Hasél", "Perú", date);
         atletaRepository.save(atleta5);
 
         System.out.println(atletaRepository.findByNacionalidad("Israel"));

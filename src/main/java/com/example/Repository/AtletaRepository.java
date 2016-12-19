@@ -27,7 +27,7 @@ public interface AtletaRepository extends JpaRepository<Atleta, Long> {
     //public List<Atleta> findByNacionalidad(String nacionalidad);
     public List<Atleta> findByFechaNacimientoBefore(LocalDate fecha);
     public List<Atleta> findByNacionalidad(String nacionalidad);
-    @Query("select a from Atleta a, Medalla m where m.id = a.medalla and m.tipoMedalla = :tipoMedalla")
+    @Query("select a from Atleta a, Medalla m where a.id = m.atleta and m.tipoMedalla = :tipoMedalla")
     public List<Atleta> findAtletasByTipoMedalla(@Param("tipoMedalla") TipoMedalla tipoMedalla);
 
     @Query("SELECT atleta " +

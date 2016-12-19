@@ -26,20 +26,18 @@ public class Medalla {
     @Column
     private String competicion;
 
-
-    /**
-     * la relación está al revés
-     * esta es la ManyToOne
-     * también tendré que cambiar los service
-     */
-    @JsonIgnore
+   /*@JsonIgnore
     @OneToMany(mappedBy = "medalla")
-    private Set<Atleta> atletas = new HashSet<>();
+    private Set<Atleta> atletas = new HashSet<>();*/
+    @JsonIgnore
+    @ManyToOne
+    private Atleta atleta;
 
-    public Medalla(TipoMedalla tipoMedalla, String especialidad, String competicion) {
+    public Medalla(TipoMedalla tipoMedalla, String especialidad, String competicion, Atleta atleta) {
         this.tipoMedalla = tipoMedalla;
         this.especialidad = especialidad;
         this.competicion = competicion;
+        this.atleta = atleta;
     }
 
     public Long getId() {
@@ -74,12 +72,12 @@ public class Medalla {
         this.competicion = competicion;
     }
 
-    public Set<Atleta> getAtletas() {
-        return atletas;
+    public Atleta getAtleta() {
+        return atleta;
     }
 
-    public void setAtletas(Set<Atleta> atletas) {
-        this.atletas = atletas;
+    public void setAtleta(Atleta atleta) {
+        this.atleta = atleta;
     }
 
     @Override
@@ -108,6 +106,7 @@ public class Medalla {
                 ", tipoMedalla=" + tipoMedalla +
                 ", especialidad='" + especialidad + '\'' +
                 ", competicion='" + competicion + '\'' +
+                ", atleta=" + atleta +
                 '}';
     }
 }

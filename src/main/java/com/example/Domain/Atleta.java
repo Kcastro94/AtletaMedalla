@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by DAM on 30/11/16.
@@ -28,16 +30,21 @@ public class Atleta {
     @Column
     private LocalDate fechaNacimiento;
 
-    @JsonIgnore
+    /*@JsonIgnore
     @ManyToOne
-    private Medalla medalla;
+    private Medalla medalla;*/
+    @JsonIgnore
+    @OneToMany(mappedBy = "atleta")
+    private Set<Medalla> medallas = new HashSet<>();
 
-    public Atleta(String nombre, String apellidos, String nacionalidad, LocalDate fechaNacimiento, Medalla medalla) {
+    public Atleta() {
+    }
+
+    public Atleta(String nombre, String apellidos, String nacionalidad, LocalDate fechaNacimiento) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.nacionalidad = nacionalidad;
         this.fechaNacimiento = fechaNacimiento;
-        this.medalla = medalla;
     }
 
     public Long getId() {
@@ -80,12 +87,12 @@ public class Atleta {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public Medalla getMedalla() {
-        return medalla;
+    public Set<Medalla> getMedallas() {
+        return medallas;
     }
 
-    public void setMedalla(Medalla medalla) {
-        this.medalla = medalla;
+    public void setMedallas(Set<Medalla> medallas) {
+        this.medallas = medallas;
     }
 
     @Override
@@ -115,7 +122,6 @@ public class Atleta {
                 ", apellidos='" + apellidos + '\'' +
                 ", nacionalidad='" + nacionalidad + '\'' +
                 ", fechaNacimiento=" + fechaNacimiento +
-                ", medalla=" + medalla +
                 '}';
     }
 }
