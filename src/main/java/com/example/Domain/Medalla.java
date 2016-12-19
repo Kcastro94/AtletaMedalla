@@ -26,9 +26,15 @@ public class Medalla {
     @Column
     private String competicion;
 
+
+    /**
+     * la relación está al revés
+     * esta es la ManyToOne
+     * también tendré que cambiar los service
+     */
     @JsonIgnore
-    @OneToMany(mappedBy = "atleta")
-    private Set<Atleta> medallas = new HashSet<>();
+    @OneToMany(mappedBy = "medalla")
+    private Set<Atleta> atletas = new HashSet<>();
 
     public Medalla(TipoMedalla tipoMedalla, String especialidad, String competicion) {
         this.tipoMedalla = tipoMedalla;
@@ -68,12 +74,12 @@ public class Medalla {
         this.competicion = competicion;
     }
 
-    public Set<Atleta> getMedallas() {
-        return medallas;
+    public Set<Atleta> getAtletas() {
+        return atletas;
     }
 
-    public void setMedallas(Set<Atleta> medallas) {
-        this.medallas = medallas;
+    public void setAtletas(Set<Atleta> atletas) {
+        this.atletas = atletas;
     }
 
     @Override
