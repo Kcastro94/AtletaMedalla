@@ -3,8 +3,7 @@ package com.example.Domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+
 
 /**
  * Created by DAM on 30/11/16.
@@ -26,12 +25,13 @@ public class Medalla {
     @Column
     private String competicion;
 
-   /*@JsonIgnore
-    @OneToMany(mappedBy = "medalla")
-    private Set<Atleta> atletas = new HashSet<>();*/
     @JsonIgnore
     @ManyToOne
     private Atleta atleta;
+
+    public Medalla() {
+
+    }
 
     public Medalla(TipoMedalla tipoMedalla, String especialidad, String competicion, Atleta atleta) {
         this.tipoMedalla = tipoMedalla;

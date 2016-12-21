@@ -30,8 +30,4 @@ public interface AtletaRepository extends JpaRepository<Atleta, Long> {
     @Query("select a from Atleta a, Medalla m where a.id = m.atleta and m.tipoMedalla = :tipoMedalla")
     public List<Atleta> findAtletasByTipoMedalla(@Param("tipoMedalla") TipoMedalla tipoMedalla);
 
-    @Query("SELECT atleta " +
-            "FROM Atleta atleta")
-    List<Atleta> getAtletasGroupByNacionalidad();
-
 }

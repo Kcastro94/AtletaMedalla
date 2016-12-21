@@ -30,9 +30,6 @@ public class Atleta {
     @Column
     private LocalDate fechaNacimiento;
 
-    /*@JsonIgnore
-    @ManyToOne
-    private Medalla medalla;*/
     @JsonIgnore
     @OneToMany(mappedBy = "atleta")
     private Set<Medalla> medallas = new HashSet<>();

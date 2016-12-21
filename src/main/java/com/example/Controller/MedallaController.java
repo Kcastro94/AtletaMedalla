@@ -31,13 +31,13 @@ public class MedallaController {
         return medallaRepository.save(medalla);
     }
 
-    // GET TODAS LAS MEDALLAS
+    // GET TODAS
     @GetMapping
     public List<Medalla> findAll() {
         return medallaRepository.findAll();
     }
 
-    // GET UNA MEDALLA
+    // GET UNA
     @GetMapping("/{id}")
     public Medalla findById(@PathVariable Long id) {
         Medalla medalla = medallaRepository.findOne(id);
